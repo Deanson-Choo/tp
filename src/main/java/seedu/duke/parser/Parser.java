@@ -8,6 +8,7 @@ import seedu.duke.commands.HelpCommand;
 import seedu.duke.commands.ListBorrowedCommand;
 import seedu.duke.commands.ListCommand;
 import seedu.duke.commands.ListOverdueCommand;
+import seedu.duke.commands.ListOverdueUsersCommand;
 import seedu.duke.commands.UpdateStatusCommand;
 import seedu.duke.commands.ListShelfCommand;
 
@@ -25,10 +26,10 @@ public class Parser {
     private static final String RETURN = "return";
     private static final String DELETE = "delete";
     private static final String HELP = "help";
-    private static final String LISTSHELF = "shelf";
-
     private static final String LIST_OVERDUE = "overdue";
     private static final String LIST_BORROWED = "borrowed";
+    private static final String LIST_OVERDUE_USERS = "users";
+    private static final String LISTSHELF = "shelf";
 
     /**
      * Parses the book index from the given string.
@@ -79,6 +80,9 @@ public class Parser {
             }
             if (LIST_BORROWED.equals(listCommandType)) {
                 return new ListBorrowedCommand();
+            }
+            if (LIST_OVERDUE_USERS.equals(listCommandType)) {
+                return new ListOverdueUsersCommand();
             }
             return new ListCommand();
         case BORROW, RETURN:

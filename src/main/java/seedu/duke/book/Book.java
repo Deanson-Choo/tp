@@ -3,7 +3,6 @@ package seedu.duke.book;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-
 public class Book {
     private final String title;
     private final String author;
@@ -45,7 +44,6 @@ public class Book {
         this.returnDueDate = date;
     }
 
-
     /**
      * Returns the string representation of the book.
      *
@@ -65,6 +63,10 @@ public class Book {
     public String toFileFormat() {
         return title + " | " + author + " | " + (isBorrowed ? 1 : 0) +
                 (returnDueDate != null ? " | " + returnDueDate : "");
+    }
+
+    public boolean isOverdue() {
+        return isBorrowed() && getReturnDueDate() != null && getReturnDueDate().isBefore(LocalDate.now());
     }
 
     // Getters

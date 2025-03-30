@@ -3,7 +3,11 @@ package seedu.duke.library;
 import seedu.duke.shelving.ShelvesManager;
 import seedu.duke.book.Book;
 import seedu.duke.book.BookManager;
+
 import seedu.duke.exception.BookNotFoundException;
+
+import seedu.duke.member.MemberManager;
+
 
 import java.util.List;
 
@@ -59,7 +63,7 @@ public class Library {
         } catch (BookNotFoundException e) {
             return e.getMessage();
         }
-    }
+
 
     public List<Book> getBooks() {
         return catalogueManager.getBooks();

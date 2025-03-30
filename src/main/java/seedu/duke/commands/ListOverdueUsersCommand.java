@@ -5,11 +5,11 @@ import seedu.duke.member.MemberManager;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
-public class ListOverdueCommand extends Command {
+public class ListOverdueUsersCommand extends Command {
 
     @Override
     public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
-        //String result = bookManager.listOverdueBooks();
-       // ui.printWithSeparator(result);
+        String result = memberManager.listMembersWithOverdueBooks();
+        ui.printWithSeparator(result);
     }
 }
