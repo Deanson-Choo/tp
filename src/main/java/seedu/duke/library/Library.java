@@ -63,6 +63,7 @@ public class Library {
         } catch (BookNotFoundException e) {
             return e.getMessage();
         }
+    }
 
 
     public List<Book> getBooks() {
