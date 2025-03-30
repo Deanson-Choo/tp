@@ -100,6 +100,7 @@ public class UiTest {
                 8. statistics                  - View library statistics.
                 9. bye                         - Exit the program.
                 10. help                        - Show this help menu.
+                11. shelf SHELF/GENRE/NUMBER    - Lists a particular shelf of specified genre.
                 -------------------
                 Genres:
                   > romance
