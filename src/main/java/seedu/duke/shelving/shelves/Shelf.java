@@ -152,4 +152,9 @@ public class Shelf {
         booksCurrentlyOnShelf -= 1;
     }
 
+    public void updateBookStatusInShelf(String commandType, int slotNum) {
+        Book book = shelfBooks.get(slotNum);
+        boolean isBorrowed = commandType.equals("borrow");
+        book.setStatus(isBorrowed);
+    }
 }

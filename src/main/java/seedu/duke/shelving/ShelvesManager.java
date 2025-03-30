@@ -134,4 +134,35 @@ public class ShelvesManager {
         }
     }
 
+    public void updateBookStatus(String commandType, String bookID) {
+        String[] parts = bookID.split("-");
+        String shelfID = parts[0];
+        int shelfNum = Integer.parseInt(parts[1]);
+        int slotNum = Integer.parseInt(parts[2]);
+        switch (shelfID) {
+        case ROMANCE_ID:
+            romanceShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        case ADVENTURE_ID:
+            adventureShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        case ACTION_ID:
+            actionShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        case HORROR_ID:
+            horrorShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        case MYSTERY_ID:
+            mysteryShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        case NONFICTION_ID:
+            nonFictionShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        case SCIFI_ID:
+            sciFiShelves.updateBookStatusInSection(commandType, shelfNum, slotNum);
+            break;
+        default:
+            break;
+        }
+    }
 }

@@ -49,10 +49,16 @@ public class Library {
         }
     }
 
-    public String updateBookStatus(String userInput) {
-        //update Book in catelogue
-        //update book in shelf
-        return null;
+    public String updateBookStatus(String commandType, int bookIndex) {
+        try {
+            String bookID = catalogueManager.getBookID(bookIndex);
+            String response1 = catalogueManager.updateBookStatus(commandType, bookIndex);
+            //assuming the book exists - not a dummy
+            shelvesManager.updateBookStatus(commandType, bookID);
+            return response1;
+        } catch (BookNotFoundException e) {
+            return e.getMessage();
+        }
     }
 
     public List<Book> getBooks() {

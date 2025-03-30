@@ -90,7 +90,12 @@ public class Shelves {
         }
         return NO_SECTION_AVAILABLE;
     }
+
     public void deleteBookFromSection(int shelfNum, int slotNum) {
         shelves[shelfNum].deleteBookFromShelf(slotNum);
+    }
+
+    public void updateBookStatusInSection(String commandType, int shelfNum, int slotNum) {
+        shelves[shelfNum].updateBookStatusInShelf(commandType, slotNum);
     }
 }
