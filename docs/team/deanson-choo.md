@@ -24,7 +24,7 @@ add, borrow, return, and track books efficiently.
 - **Implemented base command classes (v1.0)**
   - **What does it do**: Provides an abstract structure (Command class) to support all future user commands. Also wrote the command classes
   for basic features like add and delete.
-  - **Justification**: This component was crucial for supporting early user stories and for enforcing a clean separation of command logic.**
+  - **Justification**: This component was crucial for supporting early user stories and for enforcing a clean separation of command logic.
 - **Implemented base updateStatusCommand (v1.0)**
   - **What does it do**: allows the user to borrow and return a book
   - **Justification**: Enables core user stories such as borrowing (#20) and returning books (#21) as part of LeBook's MVP functionality.
