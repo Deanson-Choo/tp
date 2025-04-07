@@ -21,6 +21,7 @@ LeBook is a CLI-based library book management system that allows users to add, d
     - Implemented the `find` command which enables users to search the catalogue based on Title, Author, Genre, or unique Book ID. Introduced a `BookFinder` utility class to handle all search logic.
   - **Justification**:
     - Supports user story #109 by helping users locate books more efficiently in larger libraries. Greatly improves usability and flexibility for librarians and users.
+  <div style="page-break-after: always;"></div>
   - **Highlights**:
     - Designed the `BookFinder` class to separate search logic from the main catalogue manager, improving modularity. Developed multiple `SearchBy...Command` classes (#111, #112, #113) to perform case-insensitive and keyword-based searches across various fields.
 
@@ -53,6 +54,8 @@ LeBook is a CLI-based library book management system that allows users to add, d
 - Created and updated:
   - **Class Diagram**: Depicting relationships between `BookManager`, `Book`, `BookFinder`, and Command classes.
   - **Sequence Diagram**: Showing the flow of the "Find Book by Title" command.
+
+<div style="page-break-after: always;"></div>
 
 ### Contributions to team-based tasks:
 

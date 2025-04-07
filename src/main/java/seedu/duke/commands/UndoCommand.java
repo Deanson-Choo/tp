@@ -18,12 +18,22 @@ public class UndoCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
-        boolean confirmed = ui.confirmUndo(undoCount);
-        if (!confirmed) {
-            return;
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+        long undoableCount = library.getUndoManager().getUndoableCommandCount();
+
+        if (undoCount > undoableCount) {
+            ui.printError("You only have " + undoableCount + " undoable command(s).");
+            return false;
         }
+
+        boolean confirmed = ui.confirmUndo(undoCount);  // new helper method
+        if (!confirmed) {
+            ui.printMessage("Undo cancelled.");
+            return false;
+        }
+
         library.getUndoManager().undoCommands(undoCount, library, ui, storage, memberManager);
+        return true;
     }
 
     @Override

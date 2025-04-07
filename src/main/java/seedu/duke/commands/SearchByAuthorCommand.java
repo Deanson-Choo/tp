@@ -18,7 +18,6 @@ import java.util.List;
  * to the BookFinder utility class.
  * Usage: find author AUTHOR_NAME
  * Example: find author tolkien
- *
  */
 public class SearchByAuthorCommand extends Command {
 
@@ -37,14 +36,15 @@ public class SearchByAuthorCommand extends Command {
      * This method validates the search term, retrieves the book collection,
      * performs the search using BookFinder, and displays the results using the UI.
      *
-     * @param library        The library instance containing book data.
-     * @param ui             The UI to display output to the user.
-     * @param storage        The storage component for data persistence.
-     * @param memberManager  The manager for library member operations.
+     * @param library       The library instance containing book data.
+     * @param ui            The UI to display output to the user.
+     * @param storage       The storage component for data persistence.
+     * @param memberManager The manager for library member operations.
      * @throws LeBookException If the search term is empty or if any other error occurs.
      */
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) throws LeBookException {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager)
+            throws LeBookException {
         if (searchTerm.isEmpty()) {
             throw new LeBookException("Please provide an author name to search for.");
         }
@@ -54,11 +54,12 @@ public class SearchByAuthorCommand extends Command {
         List<Book> results = finder.findBooksByAuthor(searchTerm);
 
         if (results.isEmpty()) {
-            ui.printMessage("Sorry, no books found with authors containing '" + searchTerm + "'.");
+            ui.printMessage("Sorry, no books found with author '" + searchTerm + "'.");
         } else {
-            ui.printMessage("Found " + results.size() + " book(s) with authors containing '" + searchTerm + "':");
+            ui.printMessage("Found " + results.size() + " book(s) with author '" + searchTerm + "':");
             ui.showBookList(results);
         }
+        return true;
     }
 
     @Override

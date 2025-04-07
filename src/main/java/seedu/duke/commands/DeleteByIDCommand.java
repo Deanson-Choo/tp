@@ -22,7 +22,7 @@ public class DeleteByIDCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         assert library != null : "BookManager should not be null";
         assert ui != null : "Ui should not be null";
         assert storage != null : "Storage should not be null";
@@ -31,12 +31,13 @@ public class DeleteByIDCommand extends Command {
 
         if (deletedBook == null) {
             ui.printError("Book to delete not found");
-            return;
+            return false;
         }
 
         String response = library.deleteBook(bookID);
         ui.printWithSeparator(response);
         storage.writeToFile(library.getBooks());
+        return true;
     }
 
     //@@author eth4n22

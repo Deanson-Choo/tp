@@ -9,10 +9,11 @@ import seedu.duke.ui.Ui;
 public class ExitCommand extends Command {
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         assert library != null : "BookManager should not be null";
         assert ui != null : "Ui should not be null";
         assert storage != null : "Storage should not be null";
+        return true;
     }
 
     @Override

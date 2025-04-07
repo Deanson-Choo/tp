@@ -8,9 +8,10 @@ import seedu.duke.ui.Ui;
 public class ListOverdueUsersCommand extends Command {
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         String result = memberManager.listMembersWithOverdueBooks();
         ui.printWithSeparator(result);
+        return true;
     }
 
     @Override

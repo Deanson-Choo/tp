@@ -8,9 +8,10 @@ import seedu.duke.ui.Ui;
 public class ListBorrowedCommand extends Command {
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         String result = library.listBorrowedBooks();
         ui.printWithSeparator(result);
+        return true;
     }
 
     @Override

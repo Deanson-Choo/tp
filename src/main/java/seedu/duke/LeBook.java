@@ -45,9 +45,9 @@ public class LeBook {
                 Command command = Parser.parse(userInput);
                 assert command != null : "Parser should return a valid Command object";
 
-                command.execute(library, ui, storage, memberManager);
+                boolean success = command.execute(library, ui, storage, memberManager);
 
-                if (command.isUndoable()) {
+                if (success && command.isUndoable()) {
                     library.getUndoManager().pushCommand(command);
                 }
 

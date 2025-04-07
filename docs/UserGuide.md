@@ -211,8 +211,10 @@ ____________________________________________________________
 
 ### 7. Undoing Previous Command(s)
 
-Undo the last registered command (Add, Delete, Return, Borrow)
-(`undo` function defaults to undoing only the most recent single undoable command if no number is stated).
+
+Undo the last registered command (Add, Delete, Return, Borrow).
+If no number is specified, the `undo` function defaults to undoing only the most recent single undoable command.
+
 
 **Format:**
 
@@ -226,6 +228,16 @@ undo NUMBER_OF_COMMANDS_TO_UNDO
 undo
 undo 2
 ```
+
+**Confirmation Prompt**
+Before undoing, the system prompts: `Confirm undo 1 request? <y/n>:`
+Only `y`, `Y`, `n`, `N` responses are accepted.
+Invalid responses will show: `[ERROR] Please respond with 'y' or 'n'.`
+
+**Error Cases**
+- Input < 1: `[ERROR] Invalid undo count. Must be at least 1.`
+- Input > 2147483647: `[ERROR] Undo count is too large. Maximum allowed is: 2147483647.`
+- Input > number of undoable commands: `[ERROR] You only have 0 undoable command(s).`
 
 **Example Output:**
 

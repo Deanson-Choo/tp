@@ -21,14 +21,14 @@ public class DeleteByIndexCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         assert library != null : "BookManager should not be null";
         assert ui != null : "Ui should not be null";
         assert storage != null : "Storage should not be null";
 
         if (bookIndex < 0 || bookIndex >= library.getBooks().size()) {
             ui.printError("Invalid book index to delete.");
-            return;
+            return false;
         }
 
         deletedBook = library.getBooks().get(bookIndex);
@@ -36,6 +36,7 @@ public class DeleteByIndexCommand extends Command {
         String response = library.deleteBook(bookIndex);
         ui.printWithSeparator(response);
         storage.writeToFile(library.getBooks());
+        return true;
     }
     //@@author eth4n22
     @Override

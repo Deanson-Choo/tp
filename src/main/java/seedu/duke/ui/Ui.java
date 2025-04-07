@@ -137,19 +137,13 @@ public class Ui {
     }
 
     public boolean confirmUndo(int count) {
-        while (true) {
+        System.out.print("Confirm undo " + count + " request? <y/n>: ");
+        String response = scanner.nextLine().trim().toLowerCase();
+        while (!response.equals("y") && !response.equals("n")) {
+            printError("Please respond with 'y' or 'n'.");
             System.out.print("Confirm undo " + count + " request? <y/n>: ");
-            String input = scanner.nextLine().trim().toLowerCase();
-
-            if (input.equals("y")) {
-                return true;
-            } else if (input.equals("n")) {
-                printMessage("Undo cancelled.");
-                return false;
-            } else {
-                printError("Invalid input. Please respond with y/n.");
-            }
+            response = scanner.nextLine().trim().toLowerCase();
         }
+        return response.equals("y");
     }
-
 }

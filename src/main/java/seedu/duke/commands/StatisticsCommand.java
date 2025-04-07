@@ -15,10 +15,11 @@ public class StatisticsCommand extends Command {
 
     //@@author eth4n22
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         List<Book> books = null;
         String statistics = Library.getTheOneLibrary(books).getStatistics();
         ui.printWithSeparator(statistics);
+        return true;
     }
 
     @Override

@@ -19,7 +19,8 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) throws LeBookException {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager)
+            throws LeBookException {
         assert library != null : "Library should not be null";
         assert ui != null : "Ui should not be null";
         assert storage != null : "Storage should not be null";
@@ -36,9 +37,10 @@ public class AddCommand extends Command {
             String responseForShelf = library.addNewBookToShelf(title, author, genre);
             ui.printWithSeparator(responseForCatalogue + responseForShelf);
             storage.writeToFile(library.getBooks());
-
             addedBookIndex = library.getLastAddedBookIndex(title, author);
+            return true;
         }
+        return false;
     }
 
     @Override

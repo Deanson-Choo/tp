@@ -9,12 +9,14 @@ import seedu.duke.ui.Ui;
 public class ListCommand extends Command {
 
     @Override
-    public void execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
+    public boolean execute(Library library, Ui ui, Storage storage, MemberManager memberManager) {
         assert library != null : "BookManager should not be null";
         assert ui != null : "Ui should not be null";
         assert storage != null : "Storage should not be null";
+
         String response = library.listBooks();
         ui.printWithSeparator(response);
+        return true;
     }
     //@@author
     @Override

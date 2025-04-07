@@ -19,29 +19,39 @@ public class UndoManager {
         commandHistory.push(command);
     }
 
+    public long getUndoableCommandCount() {
+        return commandHistory.stream().filter(Command::isUndoable).count();
+    }
+
     public void undoCommands(int count, Library library, Ui ui, Storage storage, MemberManager memberManager) {
         if (commandHistory.isEmpty()) {
             ui.printError("No commands to undo!");
             return;
         }
 
+        long undoableCount = commandHistory.stream().filter(Command::isUndoable).count();
+
+        if (count > undoableCount) {
+            ui.printError("You only have " + undoableCount + " undoable command(s).");
+            return;
+        }
+
         int undoneCount = 0;
-        while (undoneCount < count) {
-            if (commandHistory.isEmpty()) {
-                ui.printError("No commands to undo!");
-                break;
-            }
+        Stack<Command> tempStack = new Stack<>();
+
+        while (!commandHistory.isEmpty() && undoneCount < count) {
             Command lastCommand = commandHistory.pop();
             if (lastCommand.isUndoable()) {
                 lastCommand.undo(library, ui, storage, memberManager);
                 ui.printSuccess("Successfully undone: " + lastCommand.getCommandDescription());
                 undoneCount++;
             } else {
-                ui.printError(lastCommand.getCommandDescription());
+                tempStack.push(lastCommand);
             }
         }
-
-
-
+        while (!tempStack.isEmpty()) {
+            commandHistory.push(tempStack.pop());
+        }
     }
+
 }
